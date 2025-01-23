@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBT Token Bridge</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>IBT Token Bridge</h1>
+        <p>Transfer IBT tokens between Ethereum and Sui.</p>
+
+        <!-- Ethereum to Sui Transfer Form -->
+        <form action="/transfer_eth_to_sui" method="POST">
+            <h2>Transfer from Ethereum to Sui</h2>
+            <div class="form-group">
+                <label for="ethSender">Ethereum Sender Address:</label>
+                <input type="text" id="ethSender" name="ethSender" placeholder="Enter Ethereum address" required>
+            </div>
+            <div class="form-group">
+                <label for="ethPrivateKey">Ethereum Private Key:</label>
+                <input type="text" id="ethPrivateKey" name="ethPrivateKey" placeholder="Enter private key" required>
+            </div>
+            <div class="form-group">
+                <label for="amountEthToSui">Amount:</label>
+                <input type="number" id="amountEthToSui" name="amountEthToSui" placeholder="Enter amount" required>
+            </div>
+            <div class="form-group">
+                <label for="suiRecipient">Sui Recipient Address:</label>
+                <input type="text" id="suiRecipient" name="suiRecipient" placeholder="Enter Sui address" required>
+            </div>
+            <button type="submit">Bridge ETH → Sui</button>
+        </form>
+
+        <!-- Sui to Ethereum Transfer Form -->
+        <form action="/transfer_sui_to_eth" method="POST">
+            <h2>Transfer from Sui to Ethereum</h2>
+            <div class="form-group">
+                <label for="suiSender">Sui Sender Address:</label>
+                <input type="text" id="suiSender" name="suiSender" placeholder="Enter Sui address" required>
+            </div>
+            <div class="form-group">
+                <label for="suiPrivateKey">Sui Private Key:</label>
+                <input type="text" id="suiPrivateKey" name="suiPrivateKey" placeholder="Enter private key" required>
+            </div>
+            <div class="form-group">
+                <label for="amountSuiToEth">Amount:</label>
+                <input type="number" id="amountSuiToEth" name="amountSuiToEth" placeholder="Enter amount" required>
+            </div>
+            <div class="form-group">
+                <label for="ethRecipient">Ethereum Recipient Address:</label>
+                <input type="text" id="ethRecipient" name="ethRecipient" placeholder="Enter Ethereum address" required>
+            </div>
+            <button type="submit">Bridge Sui → ETH</button>
+        </form>
+
+        <!-- Transaction Status -->
+        <div id="status" class="{% if status and 'Error' in status %}error{% endif %}">
+            {% if status %}
+                <p>{{ status }}</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
